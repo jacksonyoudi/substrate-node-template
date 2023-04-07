@@ -1,0 +1,54 @@
+Arguments: 
+  /usr/local/Cellar/node/19.8.1/bin/node /usr/local/Cellar/yarn/1.22.19/libexec/bin/yarn.js ts-node main
+
+PATH: 
+  /usr/local/Cellar/protobuf/21.12/bin:/usr/local/opt/icu4c/sbin:/usr/local/opt/icu4c/bin:/Users/changyouliang/go/bin:/usr/local/opt/mysql-client@5.7/bin:/usr/local/opt/scala@2.12/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/Library/Apple/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Users/changyouliang/.cargo/bin:/usr/local/bin
+
+Yarn version: 
+  1.22.19
+
+Node version: 
+  19.8.1
+
+Platform: 
+  darwin x64
+
+Trace: 
+  SyntaxError: /Users/changyouliang/project/rustproject/subscrate/substrate-node-template/Frontend/package.json: Expected double-quoted property name in JSON at position 67
+      at JSON.parse (<anonymous>)
+      at /usr/local/Cellar/yarn/1.22.19/libexec/lib/cli.js:1629:59
+      at Generator.next (<anonymous>)
+      at step (/usr/local/Cellar/yarn/1.22.19/libexec/lib/cli.js:310:30)
+      at /usr/local/Cellar/yarn/1.22.19/libexec/lib/cli.js:321:13
+
+npm manifest: 
+  {
+    "name": "frontend",
+    "version": "1.0.0",
+    "description": "",
+  //  "main": "index.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+      "@types/node": "^18.15.11",
+      "nodemon": "^2.0.22",
+      "ts-node": "^10.9.1",
+      "tslib": "^2.5.0",
+      "typescript": "^5.0.3"
+    },
+    "dependencies": {
+      "@polkadot/api": "^10.2.2",
+      "@polkadot/util": "^11.1.3",
+      "web3": "^1.9.0"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
