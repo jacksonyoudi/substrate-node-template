@@ -1,10 +1,16 @@
 #![cfg_attr(not(feature = "std"), no_std)]
 
+
 pub use pallet::*;
 use frame_support::pallet_prelude::*;
 use frame_system::pallet_prelude::*;
 use sp_std::prelude::*;
 
+#[cfg(test)]
+pub mod mock;
+
+#[cfg(test)]
+pub mod tests;
 
 #[frame_support::pallet]
 pub mod pallet {
@@ -75,7 +81,8 @@ pub mod pallet {
 		pub fn revoke_claim(origin: OriginFor<T>, claim: BoundedVec<u8, T::MaxClaimLength>) -> DispatchResultWithPostInfo {
 			let sender = ensure_signed(origin)?; // 确保交易的发送者是已经签名的
 
-			let (owner, _) = Proofs::<T>::get(&claim).ok_or(Error::<T>::ClaimNotExist)?; // 获取声明的所有者和区块号，如果声明不存在则返回错误
+			let (owner, _) = Proofs::<T>::get(&claim).ok_or(Error::<T>::ClaimNotExist)?;
+			// 获取声明的所有者和区块号，如果声明不存在则返回错误
 			ensure!(owner == sender, Error::<T>::NotClaimOwner); // 确保发送者是声明的所有者
 
 			Proofs::<T>::remove(&claim); // 从链上移除该声明
@@ -95,7 +102,8 @@ pub mod pallet {
 			let sender = ensure_signed(origin)?; // 确保交易的发送者是已经签名的
 
 			let (owner, _block_number) =
-				Proofs::<T>::get(&claim).ok_or(Error::<T>::ClaimNotExist)?; // 获取声明的所有者和区块号，如果声明不存在则返回错误
+				Proofs::<T>::get(&claim).ok_or(Error::<T>::ClaimNotExist)?;
+			// 获取声明的所有者和区块号，如果声明不存在则返回错误
 			ensure!(owner == sender, Error::<T>::NotClaimOwner); // 确保发送者是声明的所有者
 
 			Proofs::<T>::insert(&claim, (dest, frame_system::Pallet::<T>::block_number())); // 将声明的所有权转移给目标账户
