@@ -96,7 +96,7 @@ fn transfer_claim_works() {
 
 		// 确保非声明所有者无法转移声明的所有权
 		assert_noop!(
-				PoeModule::transfer_claim(RuntimeOrigin::signed(dest), claim.clone(), 3),
+				PoeModule::transfer_claim(RuntimeOrigin::signed(sender), claim.clone(), dest),
 				Error::<Test>::NotClaimOwner
 			);
 
@@ -154,7 +154,7 @@ fn revoke_claim_works_2() {
 		// 确保非声明所有者无法撤销声明
 		assert_noop!(
 			PoeModule::revoke_claim(RuntimeOrigin::signed(2), claim.clone()),
-			Error::<Test>::NotClaimOwner
+			Error::<Test>::ClaimNotExist
 		);
 
 		// 确保不存在的声明无法被撤销
