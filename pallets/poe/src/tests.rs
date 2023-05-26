@@ -166,4 +166,3 @@ fn revoke_claim_works_2() {
 	});
 }
 
-
