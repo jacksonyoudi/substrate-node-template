@@ -281,6 +281,13 @@ impl pallet_poe::Config for Runtime {
 
 }
 
+impl pallet_kitties::Config for Runtime {
+	type MaxClaimLength = ConstU32<512>;
+	type RuntimeEvent = RuntimeEvent;
+
+}
+
+
 // Create the runtime by composing the FRAME pallets that were previously configured.
 construct_runtime!(
 	pub struct Runtime
